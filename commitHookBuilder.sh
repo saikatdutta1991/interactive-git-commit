@@ -197,5 +197,5 @@ echo "Commit builder started" >> /dev/tty
 generatedCode=$(startBuild)
 echo "$generatedCode" > $GENERATED_SCRIPT
 
-echo "${GENERATED_SCRIPT} file generated in the directory. Copy into your project's .git/hooks/ directory. Give executable permission. Command: sudo chmod 777 .git/hooks/prepare-commit-msg" >> /dev/tty
+echo "${GENERATED_SCRIPT} file generated in the directory. Copy into your project's .git/hooks/ directory. Give executable permission. Command: sudo chmod +x .git/hooks/prepare-commit-msg" >> /dev/tty
 echo "Commit builder executed successfully" >> /dev/tty
