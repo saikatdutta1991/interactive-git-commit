@@ -1,6 +1,10 @@
 # interactive-git-commit
 Git hook builder that helps developers to write proper commit messages with an interactive Question-Answer input style.
 
+#### -- Warning --
+**Do not use enfore interactive git commit message template when using any GUI Git tool.
+This only works from Git terminal.
+
 #### Dependencies
 
 - **jq** : jq is a lightweight and flexible command-line JSON processor.
@@ -120,4 +124,3 @@ Commit builder executed successfully
 
 `prepare-commit-msg` file will be genrated if previous command executes successfully.
 Copy the generated `prepare-commit-msg` file into your desired project `./git/hooks/` directory. Make sure to give executable permission for the `prepare-commit-msg` file.
-
