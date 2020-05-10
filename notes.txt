@@ -1,0 +1,1 @@
+mv prepare-commit-msg .git/hooks/

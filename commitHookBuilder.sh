@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit program on error error
+set -e
+
 # Function to get os name
 getOs()
 {
@@ -20,7 +23,7 @@ getJsonParser()
   parser=''
   os=$(getOs)
   case "${os}" in
-    "Linux") parser='jq';;
+    "Linux") parser='jq-linux64';;
     "Mac") parser='jq-osx-amd64';;
     *) parser='jq'
   esac
@@ -32,7 +35,7 @@ generateTextCode()
 {
   i=$1
   text=$(./$JQCOMMAND -r .q <<< $2)
-  commitHeader=$(./$JQCOMMAND -r .qHeader <<< $2)
+  commitHeader=$(./$JQCOMMAND -r .aHeader <<< $2)
   echo "# Take user input for '${commitHeader}'"
   echo "userInputs_${i}=''"
   echo "while [ ! \"\$userInputs_${i}\" ]"
@@ -53,7 +56,7 @@ generateTextCode()
 generateOptionCode() 
 {
   i=$1
-  commitHeader=$(./$JQCOMMAND -r .qHeader <<< $2)
+  commitHeader=$(./$JQCOMMAND -r .aHeader <<< $2)
   text=$(./$JQCOMMAND -r .q <<< $2)
   values=$(./$JQCOMMAND -r .values <<< $2)
   echo "userInputs_${i}=''"
@@ -169,10 +172,10 @@ startBuild()
 
     # Code for appending input into commitMessage
     addAnswerNextLine=$(./$JQCOMMAND -r .addAnswerNextLine <<< $question)
-    qHeader=$(./$JQCOMMAND -r .qHeader <<< $question)
-    commitHeader=$(./$JQCOMMAND -r .qHeader <<< $question)
+    aHeader=$(./$JQCOMMAND -r .aHeader <<< $question)
+    commitHeader=$(./$JQCOMMAND -r .aHeader <<< $question)
     echo ""
-    echo "# Append user '${qHeader}' input into commit message"
+    echo "# Append user '${aHeader}' input into commit message"
     echo "echo \"\" >> \$1"
     if [ "$addAnswerNextLine" == true ] 
     then
@@ -185,8 +188,14 @@ startBuild()
   done
 }
 
+
 # clean the message file
 echo "" > $GENERATED_SCRIPT
 
+echo "Commit builder started" >> /dev/tty
+
 generatedCode=$(startBuild)
 echo "$generatedCode" > $GENERATED_SCRIPT
+
+echo "${GENERATED_SCRIPT} file generated in the directory. Copy into your project's .git/hooks/ directory. Give executable permission. Command: sudo chmod 777 .git/hooks/prepare-commit-msg" >> /dev/tty
+echo "Commit builder executed successfully" >> /dev/tty

@@ -1,0 +1,40 @@
+{
+  "commitFirstLine": [
+    {
+      "q": "Enter commit type:",
+      "aHeader": "Type",
+      "type": "option",
+      "values": ["Feat", "Fix", "Docs", "Style", "Refactor", "Test", "Chore"],
+      "isOptional": false
+    },
+    {
+      "q": "Enter commit subject:",
+      "aHeader": "Subject",
+      "type": "text",
+      "isOptional": false
+    }
+  ],
+  "commitQuestions": [
+    {
+      "q": "Describe about existing problem:",
+      "aHeader": "Problem",
+      "type": "text",
+      "isOptional": false,
+      "addAnswerNextLine": true
+    },
+    {
+      "q": "Brief your solution for the problem:",
+      "aHeader": "Solution",
+      "type": "text",
+      "isOptional": false,
+      "addAnswerNextLine": true
+    },
+    {
+      "q": "Enter any special note:",
+      "aHeader": "Note",
+      "type": "text",
+      "isOptional": true,
+      "addAnswerNextLine": true
+    }
+  ]
+}
