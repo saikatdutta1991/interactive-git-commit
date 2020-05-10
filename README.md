@@ -3,24 +3,16 @@ Git hook builder that helps developers to write proper commit messages with an i
 
 #### Dependencies
 
-------------
-
 - **jq** : jq is a lightweight and flexible command-line JSON processor.
 
 #### Supported platforms
-
-------------
 
 - OS X ( 64 bit )
 - Linux ( 64 bit )
 
 #### Get Started
 
-------------
-
 ##### Step 1:
-
-------------
 
 Download or clone the project into your local machine. 
 ```shell
@@ -28,8 +20,6 @@ git clone https://github.com/saikatdutta1991/interactive-git-commit.git
 ```
 
 ##### Step 2:
-
-------------
 
 Edit `gitmessage.config.json` file as per your commit message interactive template.
 
@@ -102,8 +92,6 @@ Date:   Sun May 10 20:03:57 2020 +0530
 
 ##### Step 3:
 
-------------
-
 Give excutable permission for these files
 - `commitHookBuilder.sh`
 - `jq-linux64`
@@ -115,8 +103,6 @@ sudo chmod +x commitHookBuilder.sh
 ```
 
 ##### Step 4:
-
-------------
 
 Go to directory `interactive-git-comiit` and run below command.
 ```bash
@@ -132,7 +118,6 @@ Commit builder executed successfully
 ```
 ##### Step 5:
 
-------------
-
 `prepare-commit-msg` file will be genrated if previous command executes successfully.
 Copy the generated `prepare-commit-msg` file into your desired project `./git/hooks/` directory. Make sure to give executable permission for the `prepare-commit-msg` file.
+
