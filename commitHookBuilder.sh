@@ -142,8 +142,8 @@ startBuild()
 
   # Generate code for adding first line
   echo "";
-  firstLine=$(echo $firstLine"\"\n")
-  echo "echo \"$firstLine >> \$1"
+  # firstLine=$(echo $firstLine"\"\n")
+  echo "echo \"$firstLine\" >> \$1"
 
   # Get length of questions
   questionLen=$(./$JQCOMMAND -r '.commitQuestions|length' <<< $JSONCONTENT)
@@ -195,7 +195,7 @@ echo "" > $GENERATED_SCRIPT
 echo "Commit builder started" >> /dev/tty
 
 generatedCode=$(startBuild)
-echo "$generatedCode" > $GENERATED_SCRIPT
+echo -e "$generatedCode" > $GENERATED_SCRIPT
 
 echo "${GENERATED_SCRIPT} file generated in the directory. Copy into your project's .git/hooks/ directory. Give executable permission. Command: sudo chmod +x .git/hooks/prepare-commit-msg" >> /dev/tty
 echo "Commit builder executed successfully" >> /dev/tty
